@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
             Route::get('/update/{id}', [CategoryController::class, 'edit'])->name('edit');
             Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
             Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::prefix('ingredient')->name('ingredient.')->group(function () {
+            Route::get('/', [IngredientController::class, 'index'])->name('index');
+            Route::get('/create', [IngredientController::class, 'create'])->name('create');
+            Route::post('/create', [IngredientController::class, 'store'])->name('store');
+            Route::get('/update/{id}', [IngredientController::class, 'edit'])->name('edit');
+            Route::put('/update/{id}', [IngredientController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id}', [IngredientController::class, 'destroy'])->name('destroy');
         });
     });
 });

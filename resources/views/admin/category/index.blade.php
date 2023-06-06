@@ -67,13 +67,15 @@
             <div class="flex justify-end">
                 <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white font-medium rounded"
                     onclick="hideDeleteConfirmation()">Cancel</button>
-                <form id="deleteForm" method="POST" action="{{ route('dashboard.category.destroy', $category->id) }}"
-                    class="ml-4">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-medium rounded">Delete</button>
-                </form>
+                @isset($category)
+                    <form id="deleteForm" method="POST" action="{{ route('dashboard.category.destroy', $category->id) }}"
+                        class="ml-4">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-medium rounded">Delete</button>
+                    </form>
+                @endisset
 
             </div>
         </div>
