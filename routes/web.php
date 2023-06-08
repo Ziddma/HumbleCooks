@@ -44,6 +44,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
             Route::put('/update/{id}', [IngredientController::class, 'update'])->name('update');
             Route::delete('/destroy/{id}', [IngredientController::class, 'destroy'])->name('destroy');
         });
+
+        Route::prefix('equipment')->name('equipment.')->group(function () {
+            Route::get('/', [IngredientController::class, 'index'])->name('index');
+            Route::get('/create', [IngredientController::class, 'create'])->name('create');
+            Route::post('/create', [IngredientController::class, 'store'])->name('store');
+            Route::get('/update/{id}', [IngredientController::class, 'edit'])->name('edit');
+            Route::put('/update/{id}', [IngredientController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id}', [IngredientController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
