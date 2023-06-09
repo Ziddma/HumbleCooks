@@ -55,6 +55,10 @@
                     @endforeach
                 </ul>
             </div>
+            <div class="mt-4">
+                {{ $categories->links('pagination::tailwind') }}
+            </div>
+            
         </div>
     </div>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ToolsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,13 +46,13 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
             Route::delete('/destroy/{id}', [IngredientController::class, 'destroy'])->name('destroy');
         });
 
-        Route::prefix('equipment')->name('equipment.')->group(function () {
-            Route::get('/', [IngredientController::class, 'index'])->name('index');
-            Route::get('/create', [IngredientController::class, 'create'])->name('create');
-            Route::post('/create', [IngredientController::class, 'store'])->name('store');
-            Route::get('/update/{id}', [IngredientController::class, 'edit'])->name('edit');
-            Route::put('/update/{id}', [IngredientController::class, 'update'])->name('update');
-            Route::delete('/destroy/{id}', [IngredientController::class, 'destroy'])->name('destroy');
+        Route::prefix('tools')->name('tools.')->group(function () {
+            Route::get('/', [ToolsController::class, 'index'])->name('index');
+            Route::get('/create', [ToolsController::class, 'create'])->name('create');
+            Route::post('/create', [ToolsController::class, 'store'])->name('store');
+            Route::get('/update/{id}', [ToolsController::class, 'edit'])->name('edit');
+            Route::put('/update/{id}', [ToolsController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id}', [ToolsController::class, 'destroy'])->name('destroy');
         });
     });
 });
