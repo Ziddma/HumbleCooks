@@ -32,7 +32,6 @@
                 </form>
             </div>
 
-
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <table class="w-full bg-white dark:bg-gray-800" id="ingredientTable">
                     <thead>

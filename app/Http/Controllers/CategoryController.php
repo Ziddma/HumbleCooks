@@ -9,11 +9,19 @@ use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $categories = Category::query()->paginate(10);
+        $search = $request->input('search');
 
-        return view('admin.category.index', compact('categories'));
+        $query = Category::query();
+
+        if ($search) {
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $categories = $query->paginate(10)->appends(['search' => $search]);
+
+        return view('admin.category.index', compact('categories', 'search'));
     }
 
     public function edit($id)
@@ -46,7 +54,7 @@ class CategoryController extends Controller
 
         return redirect()
             ->route('dashboard.category.index')
-            ->with('success', 'Category created successfully');
+            ->with('status', 'Category created successfully');
     }
 
     public function update(Request $request, $id)

@@ -43,7 +43,7 @@ class IngredientController extends Controller
         if (!$ingredient) {
             return redirect()
                 ->route('dashboard.ingredient.index')
-                ->with('status', 'ingredient not found.');
+                ->with('status', 'Ingredient not found.');
         }
 
         return view('admin.ingredient.form', compact(['ingredient', 'categories']));
@@ -76,7 +76,7 @@ class IngredientController extends Controller
 
         return redirect()
             ->route('dashboard.ingredient.index')
-            ->with('success', 'Ingredient created successfully.');
+            ->with('status', 'Ingredient created successfully.');
     }
 
     public function update(Request $request, $id)

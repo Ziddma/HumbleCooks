@@ -18,6 +18,18 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Search -->
+            <div class="mb-4 flex justify-end">
+                <form action="{{ route('dashboard.category.index') }}" method="GET" class="flex">
+                    <input type="text" name="search" value="{{ $search ?? '' }}"
+                        class="flex-1 px-2 py-1 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 focus:outline-none dark:text-white"
+                        placeholder="Search category...">
+                    <button type="submit"
+                        class="ml-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-medium rounded">
+                        Search
+                    </button>
+                </form>
+            </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <ul>
                     @foreach ($categories as $category)

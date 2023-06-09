@@ -51,9 +51,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'equipments' => [
+        'tools' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/equipments'),
+            'root' => storage_path('app/public/tools'),
             'url' => env('APP_URL') . '/storage', // Update the URL to include '/storage/avatars'
             'visibility' => 'public',
         ],
