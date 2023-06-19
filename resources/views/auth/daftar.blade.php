@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Humble's|Register</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/register.css" />
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body class="main-bg">
@@ -19,7 +19,7 @@
         <div class="login">
         <x-auth-session-status class="mb-4" :status="session('status')" />   
           <div class="card-title text-center border-bottom">
-            <h2 class="p-3">Daftar</h2>
+            <h2 class="p-3">Login</h2>
           </div>
           <form class="form" method="POST" action="{{ route('register')}}">
             @csrf
@@ -65,14 +65,12 @@
             </div>
             <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Sudah Mendaftar?') }}
+                {{ __('Already registered?') }}
             </a>
-            <p></p>
-            <div class="d-grid gap-2">
-            <x-primary-button class="btn btn-primary" >
+
+            <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>
-            </div>
         </div>
           </form>
         </div>
