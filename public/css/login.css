@@ -1,16 +1,14 @@
 :root{
     background-image: url(bgLogin.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto !important;
     position: relative;
-    width: 100px;
-    height: 1000px;
+    width: auto;
+    min-height: 100vh;
   }
   
   .main-bg {
     background: var(--main-bg) !important;
-    
-
   }
   
   input:focus, button:focus {
