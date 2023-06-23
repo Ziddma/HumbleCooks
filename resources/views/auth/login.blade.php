@@ -5,10 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Humble's|Login</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/login.css" />
+  <!-- <link rel="stylesheet" href="css/login.css" /> -->
 </head>
 
-<body class="main-bg">
+<style>
+  :root{
+    background-image: url("{{ asset('css/bgLogin.png') }}");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-attachment: fixed;
+    position: relative;
+    width: 100%;
+    height: 100% ;
+  }
+  
+  .main-bg {
+    background: var(--main-bg) !important;
+  }
+  
+  input:focus, button:focus {
+    border: 1px solid var(--main-bg) !important;
+    box-shadow: none !important;
+  }
+  
+  .form-check-input:checked {
+    background-color: var(--main-bg) !important;
+    border-color: var(--main-bg) !important;
+  }
+  
+  .card, .btn, input{
+    border-radius:0 !important;
+  }
+
+  .login{
+        /* Sign In */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 35px;
+    gap: 30px;
+    position: absolute;
+    width: 574px;
+    height: 604px;
+    left: 750px;
+    top: 150px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  .logo{
+    background-image: url("{{ asset('css/logo.png') }}");
+    position: absolute;
+    width: 579px;
+    height: 131px;
+    left: 83px;
+    top: 401px;
+
+  }
+  .form{
+    
+        width: 400px; /* Atur lebar form */
+        height: 200px; /* Atur tinggi form */
+  }
+
+  .underline-text {
+    text-decoration: underline;
+    text-decoration-color: blue; /* mengatur warna garis bawah */
+    text-decoration-style: dotted; /* mengatur gaya garis bawah */
+    color: blue;
+  }
+  
+</style>
+
+<body class="main-bg" >
     <div class="logo">
     <img src="logo.png" class="rounded float-start" alt="">
     </div>
