@@ -22,6 +22,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/detail', function () {
+    return view('detail');
+});
+
+Route::get('/search', [IngredientController::class, 'Search'])->name('search');
+
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', function () {

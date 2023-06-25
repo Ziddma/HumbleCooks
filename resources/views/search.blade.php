@@ -14,6 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -66,13 +67,15 @@
         <div class="container flex">
             <div class="flex items-center justify-between flex-grow md:pl-12 py-5">
                 <div class="flex items-center space-x-6 capitalize">
-                    
+                    <a href="pages/shop.html" class="text-gray-200 hover:text-white transition">Shop</a>
+                    <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
+                    <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a>
                 </div>
                 <div style="text-align: right;" class="flex items-center space-x-4">
                 @if (Route::has('login'))
                 
                     @auth
-                         <a href="{{ __('logout') }}" method="POST" class="text-gray-200 hover:text-white transition">Logout</a>
+                         <a href="{{ __('logout') }}" class="text-gray-200 hover:text-white transition">Logout</a>
                     @else
                         <a href="{{ route('login') }}" class="text-gray-200 hover:text-white transition">Log in</a>
 
@@ -130,65 +133,44 @@
     </div>
     <!-- ./features -->
 
-    {{-- <!-- categories -->
+    <!-- SEARCH -->
     <div class="container py-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
-        <div class="grid grid-cols-3 gap-3">
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-1.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Bedroom</a>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-2.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Mattrass</a>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-3.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Outdoor
+        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Hasil Pencarian :</h2>
+        @foreach ($ingr as $ingredient)
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg " src="{{ asset($ingredient->image) }}" alt="" />
                 </a>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-4.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Sofa</a>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-5.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Living
-                    Room</a>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="{{ asset('/rumah/images/category/category-6.jpg')}}" alt="category 1" class="w-full">
-                <a href="#"
-                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Kitchen</a>
-            </div>
+                <div class="p-5">
+                 <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {{ $ingredient->name }}
+                    </h5>
+                 </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $ingredient->description }}</p>
+                  <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+                 </div>
         </div>
-    </div>
-    <!-- ./categories --> --}}
-
-   
-
-    
-    <!-- product -->
-    <div class="container pb-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">recomended for you</h2>
         
-    
-    
+        @endforeach
     </div>
-    <!-- ./product -->
+    
+    <!-- ./SEARCH -->
 
    
+    
+
+    
 
     <!-- copyright -->
     <div class="bg-gray-800 py-4">
         <div class="container flex items-center justify-between">
             <p class="text-white">&copy; Humble's Cook's Corp</p>
-
+            <div>
+            </div>
         </div>
     </div>
     <!-- ./copyright -->
