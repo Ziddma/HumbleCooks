@@ -1,7 +1,7 @@
 <div x-data="{ imagePreview: '' }">
     <input {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm']) }} type="file" @change="previewImage($event)">
     <div x-show="imagePreview">
-        <img :src="imagePreview" alt="Image Preview" class="mt-2 max-w-xs">
+        <img :src="imagePreview" class="mt-2 max-w-xs">
     </div>
     {{ $slot }}
 
