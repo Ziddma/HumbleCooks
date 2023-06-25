@@ -1,16 +1,33 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Humble's| Login</title>
-  <link rel="shortcut icon" href="{{ asset('/rumah/images/favicon/hc.png')}}" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
-  <!-- <link rel="stylesheet" href="css/login.css" /> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Humble's Cook's</title>
+  <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"/>
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
+    rel="stylesheet"/>
+    <!-- MDB -->
+  <!-- MDB -->
+  <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 </head>
 
+
 <style>
-  :root{
+
+:root{
     background-image: url("{{ asset('css/bgLogin.png') }}");
     background-repeat: no-repeat;
     background-size: cover ;
@@ -23,77 +40,41 @@
   .main-bg {
     background: var(--main-bg) !important;
   }
-  
-  input:focus, button:focus {
-    border: 1px solid var(--main-bg) !important;
-    box-shadow: none !important;
-  }
-  
-  .form-check-input:checked {
-    background-color: var(--main-bg) !important;
-    border-color: var(--main-bg) !important;
-  }
-  
-  .card, .btn, input{
-    border-radius:0 !important;
-  }
-
-  .login{
-        /* Sign In */
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 20px 35px;
-    gap: 30px;
-    position: absolute;
-    width: 574px;
-    height: 604px;
-    left: 750px;
-    top: 150px;
-
-    background: #FFFFFF;
-    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-  }
   .logo{
     background-image: url("{{ asset('css/logo.png') }}");
-    position: absolute;
     width: 579px;
     height: 131px;
     left: 83px;
     top: 401px;
 
   }
-  .form{
-    
-        width: 400px; /* Atur lebar form */
-        height: 200px; /* Atur tinggi form */
-  }
+  </style>
 
-  .underline-text {
-    text-decoration: underline;
-    text-decoration-color: blue; /* mengatur warna garis bawah */
-    text-decoration-style: dotted; /* mengatur gaya garis bawah */
-    color: blue;
-  }
+<body class="main-bg">
+  <!-- Section: Design Block -->
   
-</style>
+<!-- Section: Design Block -->
+<section >
+  
 
-<body class="main-bg" >
-    <div class="logo">
-    <img src="logo.png" class="rounded float-start" alt="">
-    </div>
-  <!-- Login Form -->
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-lg-4 col-md-6 col-sm-6">
-        <div class="login">
-        <x-auth-session-status class="mb-4" :status="session('status')" />   
-          <div class="card-title text-center border-bottom">
-            <h2 class="p-3">Login</h2>
+  
+
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 "  >
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <<div class="logo">
+          <img src="logo.png" class="rounded float-start" alt="">
           </div>
-          <form class="form" method="post" action="{{ route('login')}}">
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+
+             <form class="form" method="post" action="{{ route('login')}}">
             @csrf
             <div class="mb-4">
               <x-input-label for="email" class="form-label" :value="__('Email')">
@@ -123,11 +104,12 @@
               </a>
             @endif
             <a href="{{ route('register') }}"><p class="underline-text">Belum punya akun?, daftar disini</p></a>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</section>
+<!-- Section: Design Block -->
 </body>
-
 </html>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\ToolsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
 
 Route::get('/detail', function () {
     return view('detail');
@@ -59,6 +62,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
             Route::get('/update/{id}', [ToolsController::class, 'edit'])->name('edit');
             Route::put('/update/{id}', [ToolsController::class, 'update'])->name('update');
             Route::delete('/destroy/{id}', [ToolsController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::prefix('receipt')->name('receipt.')->group(function () {
+            Route::get('/', [ReceiptController::class, 'index'])->name('index');
+            Route::get('/create', [ReceiptController::class, 'create'])->name('create');
+            Route::post('/create', [ReceiptController::class, 'store'])->name('store');
+            Route::get('/update/{id}', [ReceiptController::class, 'edit'])->name('edit');
+            Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('update');
+            Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('destroy');
         });
     });
 });

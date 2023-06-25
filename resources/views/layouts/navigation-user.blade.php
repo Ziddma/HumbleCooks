@@ -63,10 +63,25 @@
                         </x-slot>
                     </x-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="flex items-center space-x-4 text-center text-gray-700 hover:text-primary transition relative">
+                            <div class="text-2xl">
+                                <i class="fas fa-sign-in"></i>
+                            </div>
+
+                            <div class="text-xs leading-3">Log in</div>
+                        </a>
+                        <div class="flex items-center space-x-4">
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 hover:text-primary transition relative">
+                                <div class="text-2xl">
+                                    <i class="fas fa-address-book"></i>
+                                </div>
+    
+                                <div class="text-xs leading-3">Register</div>
+                            </a>
+                            <div class="flex items-center space-x-4">
+                            </a>
                         @endif
                 @endauth
             @endif
