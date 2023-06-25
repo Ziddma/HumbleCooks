@@ -75,7 +75,7 @@
                 @if (Route::has('login'))
                 
                     @auth
-                         <a href="{{ __('logout') }}" class="text-gray-200 hover:text-white transition">Logout</a>
+                         <a href="{{ __('logout') }}" method="POST" class="text-gray-200 hover:text-white transition">Logout</a>
                     @else
                         <a href="{{ route('login') }}" class="text-gray-200 hover:text-white transition">Log in</a>
 
