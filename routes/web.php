@@ -29,6 +29,11 @@ Route::get('/detail', function () {
     return view('detail');
 });
 
+
+Route::get('/tambah', function () {
+    return view('tambah');
+});
+
 Route::get('/search', [IngredientController::class, 'Search'])->name('search');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {

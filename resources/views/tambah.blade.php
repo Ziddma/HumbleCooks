@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Humble's Cook's</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
     <link rel="shortcut icon" href="{{ asset('/rumah/images/favicon/hc.png')}}" type="image/x-icon">
 
@@ -106,7 +111,8 @@
 
     <body>
             
-        {{-- Add picture --}}
+        <div class="container" id="section1">
+            {{-- Add picture --}}
     <div class="container" style="height: 350px; width: 430px; position: relative;">
         <div class="wrapper" style="position: relative;
         height: 300px;
@@ -124,7 +130,7 @@
            <div class="content">
               <div class="icon" style="font-size: 100px;
               color: #9658fe;">
-                 <i class="fas fa-cloud-upload-alt"></i>
+                 <img src="{{ ('rumah\images\add-image 1.png') }}"></img>
               </div>
               <div class="text" style="font-size: 20px;
               font-weight: 500;
@@ -183,26 +189,192 @@
             <label for="formGroupExampleInput">Judul Resep</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
           </div>
+
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Cerita Dibalik Resep Ini</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Porsi</label>
+          <div class="row mb-3">
+            <label for="porsi" class="col-sm-2 col-form-label">Porsi</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="porsi" placeholder="">
+            <input type="email" class="form-control" id="porsi">
             </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Lama Memasak</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lama-masak" placeholder="">
-                </div>
-            </form>
+        </div>
+        <div class="row mb-3">
+            <label for="lama-masak" class="col-sm-2 col-form-label">Lama Memasak</label>
+            <div class="col-sm-10">
+            <input type="password" class="form-control" id="lama-masak">
+            </div>
+        </div>
+        
+
+
+    </form>
         {{-- End Form judul--}}
 
-        {{-- Start form bahan --}}
+    </div>
+        
 
+        {{-- Start form bahan --}}
+        <div class="container" id="section2">
+            <h6 style="font-size: 20px; font-weight: bold">Bahan - Bahan</h6>
+            <div id="bahan"></div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Default input">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" type="button"  onclick="bahan();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            
+            
+          <script>
+            var room = 1;
+            function bahan() {
+            
+                room++;
+                var objTo = document.getElementById('bahan')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "form-group removeclass"+room);
+                var rdiv = 'removeclass'+room;
+                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div>';
+                
+                objTo.appendChild(divtest)
+            }
+            function remove_education_fields(rid) {
+                $('.removeclass'+rid).remove();
+            }
+          </script>
+
+        </div>
         {{-- End form bahan --}}
+
+
+        {{-- section 3 --}}
+        <div class="container" id="section3">
+            <h6 style="font-size: 20px; font-weight: bold">Langkah</h6>
+            <div id="langkah"></div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Default input">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" type="button"  onclick="langkah();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                </div>
+                </div>
+            </div>
+            
+            <div class="drop-zone">
+                <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                <input type="file" name="myFile" class="drop-zone__input">
+            </div>
+
+            <script>
+                document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+                const dropZoneElement = inputElement.closest(".drop-zone");
+
+                dropZoneElement.addEventListener("click", (e) => {
+                    inputElement.click();
+                });
+
+                inputElement.addEventListener("change", (e) => {
+                    if (inputElement.files.length) {
+                        updateThumbnail(dropZoneElement, inputElement.files[0]);
+                    }
+                });
+
+                dropZoneElement.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                    dropZoneElement.classList.add("drop-zone--over");
+                });
+
+                ["dragleave", "dragend"].forEach((type) => {
+                    dropZoneElement.addEventListener(type, (e) => {
+                        dropZoneElement.classList.remove("drop-zone--over");
+                    });
+                });
+
+                dropZoneElement.addEventListener("drop", (e) => {
+                    e.preventDefault();
+
+                    if (e.dataTransfer.files.length) {
+                        inputElement.files = e.dataTransfer.files;
+                        updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+                    }
+
+                    dropZoneElement.classList.remove("drop-zone--over");
+                });
+            });
+
+            /**
+             * Updates the thumbnail on a drop zone element.
+             *
+             * @param {HTMLElement} dropZoneElement
+             * @param {File} file
+             */
+            function updateThumbnail(dropZoneElement, file) {
+                let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+                // First time - remove the prompt
+                if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+                    dropZoneElement.querySelector(".drop-zone__prompt").remove();
+                }
+
+                // First time - there is no thumbnail element, so lets create it
+                if (!thumbnailElement) {
+                    thumbnailElement = document.createElement("div");
+                    thumbnailElement.classList.add("drop-zone__thumb");
+                    dropZoneElement.appendChild(thumbnailElement);
+                }
+
+                thumbnailElement.dataset.label = file.name;
+
+                // Show thumbnail for image files
+                if (file.type.startsWith("image/")) {
+                    const reader = new FileReader();
+
+                    reader.readAsDataURL(file);
+                    reader.onload = () => {
+                        thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+                    };
+                } else {
+                    thumbnailElement.style.backgroundImage = null;
+                }
+            }
+
+            </script>
+            
+          <script>
+            var room = 1;
+            function langkah() {
+            
+                room++;
+                var objTo = document.getElementById('langkah')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "form-group removeclass"+room);
+                var rdiv = 'removeclass'+room;
+                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_langkah('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div>';
+                
+                objTo.appendChild(divtest)
+            }
+            function remove_langkah(rid) {
+                $('.removeclass'+rid).remove();
+            }
+          </script>
+          <script>
+           
+          </script>
+
+
+
+        </div>
+        {{-- End section 3 --}}
+          
+        
+
+        
     
 
     
