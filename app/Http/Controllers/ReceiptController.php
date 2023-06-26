@@ -16,4 +16,9 @@ class ReceiptController extends Controller
     {
         return view('admin.receipt.form');
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }

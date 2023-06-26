@@ -77,6 +77,12 @@
                                             </div>
                                         @endforeach
                                     </div>
+                                    <div class="mt-2">
+                                        <input type="file" name="steps[1][images][]" multiple class="image-input"
+                                            accept="image/*">
+                                    </div>
+
+                                    <div class="flex mt-2" id="step-images-preview-{{ $loop->iteration }}"></div>
                                 </div>
                             @endforeach
                         @else
@@ -135,6 +141,27 @@
             } else {
                 thumbnailPreview.src = '';
             }
+        }
+
+        function attachImageInputListeners() {
+            const imageInputs = document.querySelectorAll('.image-input');
+            imageInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    const stepDiv = input.closest('.step');
+                    const previewDiv = stepDiv.querySelector(
+                        `#step-images-preview-${stepIndex + 1}`);
+                    previewDiv.innerHTML = '';
+
+                    Array.from(input.files).forEach(file => {
+                        const imagePreview = document.createElement('img');
+                        imagePreview.src = URL.createObjectURL(file);
+                        imagePreview.alt = 'Step Image';
+                        imagePreview.classList.add('w-20', 'h-20', 'object-cover',
+                            'rounded-md');
+                        previewDiv.appendChild(imagePreview);
+                    });
+                });
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -217,13 +244,15 @@
                 });
 
                 stepIndex++;
+
+                attachImageInputListeners();
             });
 
             const imageInputs = document.querySelectorAll('.image-input');
             imageInputs.forEach(input => {
                 input.addEventListener('change', () => {
                     const stepDiv = input.closest('.step');
-                    const previewDiv = stepDiv.querySelector(`#step-images-preview-${stepIndex}`);
+                    const previewDiv = stepDiv.querySelector(`#step-images-preview`);
                     previewDiv.innerHTML = '';
 
                     Array.from(input.files).forEach(file => {
@@ -236,6 +265,8 @@
                     });
                 });
             });
+
+            attachImageInputListeners();
         });
     </script>
 </x-app-layout>
