@@ -143,13 +143,12 @@
             }
         }
 
-        function attachImageInputListeners() {
+        function attachImageInputListeners(stepIndex) {
             const imageInputs = document.querySelectorAll('.image-input');
-            imageInputs.forEach(input => {
+            imageInputs.forEach((input, index) => {
                 input.addEventListener('change', () => {
                     const stepDiv = input.closest('.step');
-                    const previewDiv = stepDiv.querySelector(
-                        `#step-images-preview-${stepIndex + 1}`);
+                    const previewDiv = stepDiv.querySelector(`#step-images-preview-${stepIndex}`);
                     previewDiv.innerHTML = '';
 
                     Array.from(input.files).forEach(file => {
@@ -245,7 +244,7 @@
 
                 stepIndex++;
 
-                attachImageInputListeners();
+                attachImageInputListeners(stepIndex);
             });
 
             const imageInputs = document.querySelectorAll('.image-input');
