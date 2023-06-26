@@ -134,8 +134,8 @@
               </div>
               <div class="text" style="font-size: 20px;
               font-weight: 500;
-              color: #5b5b7b;">
-                 No file chosen, yet!
+              color: #000000;">
+                 Tambahkan Foto Resep
               </div>
            </div>
            <div id="cancel-btn">
@@ -145,6 +145,7 @@
               File name here
            </div>
         </div>
+        <h2 style="font-size: 20px; text-align: center; font-weight:500; padding : 5px; ">Tunjukkan foto hasil akhir makananmu</h2>
         <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
         <input id="default-btn" type="file" hidden>
      </div>
@@ -240,7 +241,7 @@
                 var divtest = document.createElement("div");
                 divtest.setAttribute("class", "form-group removeclass"+room);
                 var rdiv = 'removeclass'+room;
-                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div>';
+                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus"></span> </button></div></div></div><div class="clear"></div>';
                 
                 objTo.appendChild(divtest)
             }
@@ -267,12 +268,12 @@
             </div>
             
             <div class="drop-zone">
-                <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                <input type="file" name="myFile" class="drop-zone__input">
+                <span class="drop-zone__prompt">Tambahkan foto langkah memasak</span>
+                <input type="file" name="myFile" id="drop-zone-input">
             </div>
 
             <script>
-                document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+                document.querySelectorAll("#drop-zone-input").forEach((inputElement) => {
                 const dropZoneElement = inputElement.closest(".drop-zone");
 
                 dropZoneElement.addEventListener("click", (e) => {
@@ -329,7 +330,7 @@
                     dropZoneElement.appendChild(thumbnailElement);
                 }
 
-                thumbnailElement.dataset.label = file.name;
+                //thumbnailElement.dataset.label = file.name;
 
                 // Show thumbnail for image files
                 if (file.type.startsWith("image/")) {
@@ -355,7 +356,7 @@
                 var divtest = document.createElement("div");
                 divtest.setAttribute("class", "form-group removeclass"+room);
                 var rdiv = 'removeclass'+room;
-                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_langkah('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div><div class="drop-zone"><span class="drop-zone__prompt">Drop file here or click to upload</span><input type="file" name="myFile" class="drop-zone__input"></div>';
+                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_langkah('+ room +');"> <span class="glyphicon glyphicon-minus"></span> </button></div></div></div><div class="clear"></div><div class="drop-zone"><span class="drop-zone__prompt">Drop file here or click to upload</span><input type="file" name="myFile" class="drop-zone__input" id="drop-zone-input"></div>';
                 
                 objTo.appendChild(divtest)
             }
@@ -363,13 +364,11 @@
                 $('.removeclass'+rid).remove();
             }
           </script>
-          <script>
-           
-          </script>
 
 
 
         </div>
+        
         {{-- End section 3 --}}
           
         
