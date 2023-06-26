@@ -47,6 +47,24 @@
                             required>{{ isset($receipt) ? $receipt->description : '' }}</textarea>
                     </div>
 
+                    <div class="mb-4">
+                        <label for="cal_total"
+                            class="block text-base font-medium text-gray-700 dark:text-gray-300">Calories</label>
+                        <input type="text" name="cal_total" id="cal_total"
+                            value="{{ isset($receipt) ? $receipt->cal_total : '' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 dark:text-white"
+                            required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="est_price"
+                            class="block text-base font-medium text-gray-700 dark:text-gray-300">Estimated Price</label>
+                        <input type="text" name="est_price" id="est_price"
+                            value="{{ isset($receipt) ? $receipt->est_price : '' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 dark:text-white"
+                            required>
+                    </div>
+
                     <div id="steps-container">
                         @if (isset($receipt) && $receipt->steps->count() > 0)
                             @foreach ($receipt->steps as $step)
