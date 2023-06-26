@@ -7,7 +7,7 @@
         <div class="mb-4 flex justify-end">
             <form action="{{ route('search') }}" method="GET" class="flex">
                 <input type="text" name="search" value="{{ $search ?? '' }}"
-                    class="flex-1 px-2 py-1 border border-black-300 dark:border-gray-700 dark:bg-gray-900 focus:outline-none dark:text-white"
+                    class="flex-1 px-2 py-1 border border-black-300 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     placeholder="Search ingredient...">
                 <button type="submit"
                     class="ml-2 px-4 py-2 bg-orange-500 hover:bg-orange-700 text-white font-medium rounded"
@@ -62,27 +62,21 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                    @else
-                        <a href="{{ route('login') }}" class="flex items-center space-x-4 text-center text-gray-700 hover:text-primary transition relative">
+                @else
+                    <a href="{{ route('login') }}" class="text-center text-gray-700 hover:text-primary transition relative">
+                        <div class="text-2xl">
+                            <i class="fas fa-sign-in"></i>
+                        </div>
+                        <div class="text-xs leading-3">Log in</div>
+                    </a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            class="text-center text-gray-700 hover:text-primary transition relative">
                             <div class="text-2xl">
-                                <i class="fas fa-sign-in"></i>
+                                <i class="fas fa-address-book"></i>
                             </div>
-
-                            <div class="text-xs leading-3">Log in</div>
-                        </a>
-                        <div class="flex items-center space-x-4">
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 hover:text-primary transition relative">
-                                <div class="text-2xl">
-                                    <i class="fas fa-address-book"></i>
-                                </div>
-    
-                                <div class="text-xs leading-3">Register</div>
-                            </a>
-                            <div class="flex items-center space-x-4">
-                            </a>
-                        @endif
+                            <div class="text-xs leading-3">Register</div>
+                    @endif
                 @endauth
             @endif
         </div>

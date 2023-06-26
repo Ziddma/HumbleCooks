@@ -47,6 +47,24 @@
                             required>{{ isset($receipt) ? $receipt->description : '' }}</textarea>
                     </div>
 
+                    <div class="mb-4">
+                        <label for="cal_total"
+                            class="block text-base font-medium text-gray-700 dark:text-gray-300">Calories</label>
+                        <input type="text" name="cal_total" id="cal_total"
+                            value="{{ isset($receipt) ? $receipt->cal_total : '' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 dark:text-white"
+                            required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="est_price"
+                            class="block text-base font-medium text-gray-700 dark:text-gray-300">Estimated Price</label>
+                        <input type="text" name="est_price" id="est_price"
+                            value="{{ isset($receipt) ? $receipt->est_price : '' }}"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-500 dark:text-white"
+                            required>
+                    </div>
+
                     <div id="steps-container">
                         @if (isset($receipt) && $receipt->steps->count() > 0)
                             @foreach ($receipt->steps as $step)
@@ -77,6 +95,12 @@
                                             </div>
                                         @endforeach
                                     </div>
+                                    <div class="mt-2">
+                                        <input type="file" name="steps[1][images][]" multiple class="image-input"
+                                            accept="image/*">
+                                    </div>
+
+                                    <div class="flex mt-2" id="step-images-preview-{{ $loop->iteration }}"></div>
                                 </div>
                             @endforeach
                         @else
@@ -135,6 +159,26 @@
             } else {
                 thumbnailPreview.src = '';
             }
+        }
+
+        function attachImageInputListeners(stepIndex) {
+            const imageInputs = document.querySelectorAll('.image-input');
+            imageInputs.forEach((input, index) => {
+                input.addEventListener('change', () => {
+                    const stepDiv = input.closest('.step');
+                    const previewDiv = stepDiv.querySelector(`#step-images-preview-${stepIndex}`);
+                    previewDiv.innerHTML = '';
+
+                    Array.from(input.files).forEach(file => {
+                        const imagePreview = document.createElement('img');
+                        imagePreview.src = URL.createObjectURL(file);
+                        imagePreview.alt = 'Step Image';
+                        imagePreview.classList.add('w-20', 'h-20', 'object-cover',
+                            'rounded-md');
+                        previewDiv.appendChild(imagePreview);
+                    });
+                });
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -217,13 +261,15 @@
                 });
 
                 stepIndex++;
+
+                attachImageInputListeners(stepIndex);
             });
 
             const imageInputs = document.querySelectorAll('.image-input');
             imageInputs.forEach(input => {
                 input.addEventListener('change', () => {
                     const stepDiv = input.closest('.step');
-                    const previewDiv = stepDiv.querySelector(`#step-images-preview-${stepIndex}`);
+                    const previewDiv = stepDiv.querySelector(`#step-images-preview`);
                     previewDiv.innerHTML = '';
 
                     Array.from(input.files).forEach(file => {
@@ -236,6 +282,8 @@
                     });
                 });
             });
+
+            attachImageInputListeners();
         });
     </script>
 </x-app-layout>
