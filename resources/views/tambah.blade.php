@@ -355,7 +355,7 @@
                 var divtest = document.createElement("div");
                 divtest.setAttribute("class", "form-group removeclass"+room);
                 var rdiv = 'removeclass'+room;
-                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_langkah('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div>';
+                divtest.innerHTML = '<div class="form-group"><div class="input-group"><input class="form-control" type="text" placeholder="Default input"> <div class="input-group-btn">  <button class="btn btn-danger" type="button" onclick="remove_langkah('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div><div class="clear"></div><div class="drop-zone"><span class="drop-zone__prompt">Drop file here or click to upload</span><input type="file" name="myFile" class="drop-zone__input"></div>';
                 
                 objTo.appendChild(divtest)
             }

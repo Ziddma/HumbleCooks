@@ -1945,15 +1945,17 @@ h6 {
 
 #section1 {
     padding: 50px;
-    width: 1000px;
+    max-width: 1000px;
 }
 
 #section2 {
     padding: 50px;
-    width: 1000px;
+    max-width: 1000px;
 }
 
 #section3 {
+    padding: 50px;
+    max-width: 1000px;
 }
 
 .drag-area {
